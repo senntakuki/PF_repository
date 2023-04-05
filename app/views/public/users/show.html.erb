@@ -1,0 +1,49 @@
+<div class="container">
+ <h2 class="font-weight-bold" >会員詳細画面</h2>
+
+  <div class="row d-flex">
+   <div class="col-6">
+    <h3>プロフィール</h3>
+     <table class="table">
+     <tbody>
+       <tr>
+       <%= image_tag @user.get_profile_image(100,100) %>
+       </tr>
+       <tr>
+         <th>名前</th>
+         <td><%= @user.name %></td>
+         <th>紹介文</th>
+         <td><%= @user.introduction %></td>
+       </tr>
+     </tbody>
+   </table>
+    <% if @user == current_user %>
+      <p><%= link_to "プロフィール編集", edit_public_user_path(@user) %></p>
+    <% end %>
+   </div>
+
+   <div class="col-6">
+   <h2 class="font-weight-bold">投稿</h2>
+   <table class="table">
+     <thead>
+       <tr>
+         <th>タイトル</th>
+         <th>内容</th>
+       </tr>
+     </thead>
+     <% @tweets.each do |tweet| %>
+     <tbody>
+       <tr>
+         <td><%= link_to(tweets.user) do %>
+           <%= image_tag tweet.user.get_profile_image(100,100) %>
+           <% end %>
+         </td>
+         <td><%= link_to tweet.title,tweet %></td>
+         <td><%= tweet.body %></td>
+       </tr>
+     </tbody>
+     <% end %>
+   </table>
+   </div>
+  </div>
+ </div>
