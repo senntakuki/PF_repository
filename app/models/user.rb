@@ -15,6 +15,6 @@ class User < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'no-image.jpg', content_type: 'image/jpeg')
     end
     profile_image.variant(resize_to_limit: [widht, height]).processed
-  end
+   end
 
 end

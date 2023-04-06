@@ -2,7 +2,7 @@
  <h2 class="font-weight-bold" >会員詳細画面</h2>
 
   <div class="row d-flex">
-   <div class="col-6">
+   <div class="col-5">
     <h3>プロフィール</h3>
      <table class="table">
      <tbody>
@@ -12,17 +12,19 @@
        <tr>
          <th>名前</th>
          <td><%= @user.name %></td>
+       </tr>
+       <tr>
          <th>紹介文</th>
          <td><%= @user.introduction %></td>
        </tr>
      </tbody>
    </table>
     <% if @user == current_user %>
-      <p><%= link_to "プロフィール編集", edit_public_user_path(@user) %></p>
+      <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success" %></p>
     <% end %>
    </div>
 
-   <div class="col-6">
+   <div class="col-7">
    <h2 class="font-weight-bold">投稿</h2>
    <table class="table">
      <thead>

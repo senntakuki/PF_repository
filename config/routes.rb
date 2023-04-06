@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   end
 
   # 会員用
-   namespace :public do
+  scope module: :public do
     root 'homes#top'
-   resources :tweets, only: [:new,:index,:show,:edit,:create,:destroy,:update] do
+   resources :tweets, only: [:new, :index, :show, :edit, :create, :destroy, :update] do
     resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-   resources :users, only: [:index,:show,:edit,:update]
+   resources :users, only: [:index, :show, :edit, :update]
   end
 
 # 会員用

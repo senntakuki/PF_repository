@@ -16,6 +16,13 @@ class Public::UsersController < ApplicationController
    end
 
    def update
+      @user = User.find(params[:id])
+      @ser.update(user_params)
+    if @user.save
+      redirect_to public_user_path(@user.id)
+    else
+      render :edit
+    end
    end
 
    private
