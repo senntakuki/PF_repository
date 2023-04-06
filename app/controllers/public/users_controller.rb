@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
-   before_action :ensure_correct_user, only: [:edit, :update]
-   before_action :ensure_guest_user, only: [:edit]
+   #before_action :ensure_correct_user, only: [:edit, :update]
+   #before_action :ensure_guest_user, only: [:edit]
 
    def show
       @user = User.find(params[:id])
@@ -16,24 +16,25 @@ class Public::UsersController < ApplicationController
    end
 
    def update
-      @user = User.find(params[:id])
-      @ser.update(user_params)
+     @user = User.find(params[:id])
+     @user.update(user_params)
     if @user.save
-      redirect_to public_user_path(@user.id)
+      redirect_to user_path(@user.id)
     else
       render :edit
     end
+   end
 
     def is_deleted
         @user = current_user
      if @user.update(is_deleted: true)
-   　　 sign_out_and_redirect(current_customer)
+        sign_out_and_redirect(current_user)
      else
-  　　　  render "unsubscribe"
+        render "unsubscribe"
      end
     end
 
-    def withdraw
+    def remove
         @user = current_user
      if @user.update(is_deleted: true)
        sign_out_and_redirect(current_user)
@@ -42,7 +43,7 @@ class Public::UsersController < ApplicationController
      end
     end
 
-   end
+
 
    private
 

@@ -24,11 +24,15 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-   resources :users, only: [:index, :show, :edit, :update]
+   resources :users, only: [:index, :show, :edit, :update] do
+     collection do
+       patch "remove"
+       end
+       end
      # 退会確認画面
    get 'unsubscribe' =>'users#unsubscribe'
      # 論理削除用のルーティング
-   patch 'withdraw' => 'users#withdraw'
+   #patch 'remove' => 'users#remove'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
