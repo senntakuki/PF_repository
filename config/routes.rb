@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  # 会員用
+  devise_for :users,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+  }
+   # 管理者用
+  devise_for :admin,skip: [:registrations, :passwords] ,controllers:  {
+  sessions: "admin/sessions"
+  }
+
   #管理者用
   namespace :admin do
     resources :users, only: [:show, :index]
@@ -15,17 +25,10 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
    resources :users, only: [:index, :show, :edit, :update]
+     # 退会確認画面
+   get 'unsubscribe' =>'users#unsubscribe'
+     # 論理削除用のルーティング
+   patch 'withdraw' => 'users#withdraw'
   end
-
-# 会員用
-  devise_for :users,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
-
-# 管理者用
-devise_for :admin,skip: [:registrations, :passwords] ,controllers:  {
-  sessions: "admin/sessions"
-}
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

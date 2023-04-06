@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>会員一覧</h2>
+   <table>
+     <thead>
+       <tr>
+         <th>image</th>
+         <th>名前</th>
+         <th>いいね数</th>
+       </tr>
+     </thead>
+     <tbody>
+      <% @users.each do |user| %>
+       <tr>
+        <td>
+         <%= image_tag user.get_profile_image(100,100) %>
+        </td>
+        <td><%= user.name %></td>
+        <td></td>
+        <td>
+          <%= link_to "詳細", user_path(user.id), class: "btn btn-primary" %>
+        </td>
+      </tr>
+          <% end %>
+     </tbody>
+   </table>
+</div>

@@ -23,12 +23,31 @@ class Public::UsersController < ApplicationController
     else
       render :edit
     end
+
+    def is_deleted
+        @user = current_user
+     if @user.update(is_deleted: true)
+   　　 sign_out_and_redirect(current_customer)
+     else
+  　　　  render "unsubscribe"
+     end
+    end
+
+    def withdraw
+        @user = current_user
+     if @user.update(is_deleted: true)
+       sign_out_and_redirect(current_user)
+     else
+       render "unsubscribe"
+     end
+    end
+
    end
 
    private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :introduction)
+    params.require(:user).permit(:name, :profile_image, :introduction, :is_deleted)
   end
 
 

@@ -21,6 +21,7 @@
    </table>
     <% if @user == current_user %>
       <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success" %></p>
+      <p><%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %></p>
     <% end %>
    </div>
 
