@@ -2,7 +2,7 @@
  <h2 class="font-weight-bold" >会員詳細画面</h2>
 
   <div class="row d-flex">
-   <div class="col-5">
+   <div class="col-4">
     <h3>プロフィール</h3>
      <table class="table">
      <tbody>
@@ -17,27 +17,39 @@
          <th>紹介文</th>
          <td><%= @user.introduction %></td>
        </tr>
+       <tr>
+        <th>フォロー数</th>
+        <td></td>
+       </tr>
+       <tr>
+        <th>フォロワー数</th>
+        <td></td>
+       </tr>
      </tbody>
    </table>
     <% if @user == current_user %>
-      <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success" %></p>
-      <p><%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %></p>
+      <p><%= link_to "プロフィール編集⚙️", edit_user_path(@user), class: "btn btn-success" %></p>
+      <p><%= link_to "投稿する📮", new_tweet_path, class: "btn btn-primary" %></p>
+      <p><%= link_to "退会する🚪", unsubscribe_path, class: "btn btn-danger" %></p>
     <% end %>
    </div>
 
-   <div class="col-7">
+   <div class="col-8">
    <h2 class="font-weight-bold">投稿</h2>
    <table class="table">
      <thead>
-       <tr>
-         <th>タイトル</th>
-         <th>内容</th>
+       <tr class="text-center">
+         <th class="col-1">名前</th>
+         <th class="col-3">タイトル</th>
+         <th class="col-4">内容</th>
+         <th>いいね❤️</th>
+         <th>コメント💬</th>
        </tr>
      </thead>
      <% @tweets.each do |tweet| %>
      <tbody>
        <tr>
-         <td><%= link_to(tweets.user) do %>
+         <td><%= link_to(tweet.user) do %>
            <%= image_tag tweet.user.get_profile_image(100,100) %>
            <% end %>
          </td>
@@ -46,7 +58,7 @@
        </tr>
      </tbody>
      <% end %>
-   </table>
+    </table>
    </div>
   </div>
  </div>

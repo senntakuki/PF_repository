@@ -3,9 +3,11 @@
 <table class="table">
   <thead>
     <tr>
-      <th class="col-2">image</th>
+      <th class="col-2">会員画像</th>
       <th class="col-2">名前</th>
-      <th>フォロー</th>
+      <th class="text-center">紹介文</th>
+      <th>フォローワー数</th>
+      <th>詳細ページ</th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +17,7 @@
         <%= image_tag user.get_profile_image(100,100) %>
       </td>
       <td><%= user.name %></td>
+      <td><%= user.introduction %></td>
       <td></td>
       <td>
         <%= link_to "詳細", user_path(user.id), class: "btn btn-primary" %>

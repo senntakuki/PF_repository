@@ -33,6 +33,8 @@ Rails.application.routes.draw do
    get 'unsubscribe' =>'users#unsubscribe'
      # 論理削除用のルーティング
    #patch 'remove' => 'users#remove'
+   #検索機能用
+    get "search" => "searches#search"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
