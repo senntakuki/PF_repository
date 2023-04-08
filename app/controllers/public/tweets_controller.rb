@@ -1,5 +1,4 @@
 class  Public::TweetsController < ApplicationController
-
    before_action :current_user, only: [:edit, :update]
 
   def new
@@ -23,6 +22,7 @@ class  Public::TweetsController < ApplicationController
 
   def show
     @tweet = Tweet.find(params[:id])
+    @post_comments = @tweet.post_comments
     @post_comment = PostComment.new
   end
 

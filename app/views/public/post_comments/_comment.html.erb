@@ -1,0 +1,10 @@
+<% tweet.post_comments.each do |comment| %>
+         <%= image_tag comment.user.get_profile_image(50,50) %>
+         <%= comment.comment %>
+         <% if comment.user == current_user %>
+            <%= link_to "Destroy", tweet_post_comment_path(comment.tweet, comment), method: :delete, class: "btn btn-sm btn-danger" %><br>
+         <% end %>
+            <%= link_to user_path(tweet.user.id) do %>
+            <%= comment.user.name %><br>
+         <% end %>
+         <% end %>

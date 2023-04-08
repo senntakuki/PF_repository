@@ -25,16 +25,12 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
    resources :users, only: [:index, :show, :edit, :update] do
-     collection do
-       patch "remove"
-       end
-       end
-     # 退会確認画面
-   get 'unsubscribe' =>'users#unsubscribe'
-     # 論理削除用のルーティング
-   #patch 'remove' => 'users#remove'
-   #検索機能用
-    get "search" => "searches#search"
+     end
+     get 'unsubscribe' =>'users#unsubscribe' # 退会確認画面
+     patch 'remove' => 'users#remove' # 論理削除用のルーティング
+      get "search" => "searches#search"
   end
+  #検索機能用
+   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
