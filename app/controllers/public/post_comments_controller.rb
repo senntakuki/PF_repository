@@ -9,7 +9,7 @@ class Public::PostCommentsController < ApplicationController
   end
 
   def destroy
-     @tweet = Tweet.find(params[:id])
+     @tweet = Tweet.find_by(params[:id])
      PostComment.find(params[:id]).destroy
      @post_comment = PostComment.new
   end

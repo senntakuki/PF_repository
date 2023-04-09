@@ -5,7 +5,8 @@
     <table class="table">
      <thead>
        <tr>
-         <th class="col-2">名前</th>
+         <th class="col-1">投稿日</th>
+         <th class="col-1">名前</th>
          <th class="col-2">タイトル</th>
          <th class="col-3">内容</th>
          <th class="col-1">いいね❤️</th>
@@ -13,32 +14,37 @@
        </tr>
      </thead>
        <tr>
+         <td><%= @tweet.created_at.strftime("%m-%d %H:%M") %></td>
          <td><%= link_to user_path(@tweet.user.id) do %>
-             <%= image_tag @tweet.user.get_profile_image(100,100) %><br>
+             <%= image_tag @tweet.user.get_profile_image(50,50) %><br>
              <%= @tweet.user.name %>
              <% end %>
          </td>
          <td><%= link_to @tweet.title, @tweet %></td>
          <td><%= @tweet.body %></td>
          <td><%= "いいね機能" %></td>
-         <td><%= "コメント機能" %></td>
+         <td>コメント<%= @post_comments.count %>件</td>
        </tr>
     </table>
-    <div>
+     <div>
           <% if @tweet.user == current_user %>
            <%= link_to "投稿編集", edit_tweet_path(@tweet), class: "btn btn-success" %>
            <%= link_to "投稿削除", tweet_path(@tweet.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
           <% end %>
-    </div>
-     <h4>コメント</h4>
-      <div class="comment-area">
-       <%= render "public/post_comments/comment", tweet: @tweet, post_comment: @post_comment %>
-      </div>
+     </div>
+       <h4>コメント</h4>
+         <div class="comment-area">
+          <%= render "public/post_comments/comment", tweet: @tweet, post_comment: @post_comment %>
+         </div>
 
-     <div>
-      <%= form_with(model: [@tweet, @post_comment], method: :post) do |f| %>
-       <%= f.text_area :comment, placeholder: 'コメント' %><br>
-       <%= f.submit "コメントする", class: "btn btn-success" %>
-       <% end %>
+       <div>
+         <%= form_with model: [@tweet, @post_comment], method: :post, local: true do |f| %>
+        <div class="field">
+          <%= f.text_area :comment, placeholder: 'コメント' %><br>
+        </div>
+       <div class="actions">
+          <%= f.submit "コメントする", class: "btn btn-success" %>
+          <% end %>
+       </div>
     </div>
   </div>

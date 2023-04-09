@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   #管理者用
   namespace :admin do
     resources :users, only: [:show, :index]
-    resources :tweets, only: [:index, :show]
+    resources :tweets, only: [:index, :show, :destroy]
     root 'homes#top'
   end
 
@@ -31,6 +31,6 @@ Rails.application.routes.draw do
       get "search" => "searches#search"
   end
   #検索機能用
-   
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
