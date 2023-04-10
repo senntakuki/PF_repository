@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   #管理者用
   namespace :admin do
-    resources :users, only: [:show, :index]
-    resources :tweets, only: [:index, :show, :destroy]
+    resources :users, only: [:show]
+     resources :tweets, only: [:index, :show, :destroy]
     root 'homes#top'
   end
 
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
      end
      get 'unsubscribe' =>'users#unsubscribe' # 退会確認画面
      patch 'remove' => 'users#remove' # 論理削除用のルーティング
-      get "search" => "searches#search"
+     get "search" => "searches#search"
   end
   #検索機能用
 

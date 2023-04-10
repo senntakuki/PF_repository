@@ -8,8 +8,35 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
+        <!--管理者がログインしている時-->
+       <% if admin_signed_in? %>
+        <% if request.fullpath.include? "/admin" %>
+        <li class="nav-item">
+         <%= link_to "会員一覧", admin_root_path, class: 'btn btn-outline-secondary mb-3 mr-1' %>
+        </li>
+        <li class="nav-item">
+         <%= link_to "投稿一覧", admin_tweets_path, class: 'btn btn-outline-secondary mb-3 mr-1' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary mb-3 mr-1' %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary mb-3 mr-1' %>
+       </li>
+       <li class="nav-item">
+         <%= link_to "マイページ", user_path(current_user.id), class: 'btn btn-outline-secondary mb-3 mr-1' %>
+       </li>
+       <li class="nav-item">
+         <%= link_to "会員一覧", users_path, class: 'btn btn-outline-secondary mb-3 mr-1' %>
+       </li>
+       <li class="nav-item">
+         <%= link_to "投稿一覧", tweets_path, class: 'btn btn-outline-secondary mb-3 mr-1' %>
+       </li>
+       <% end %>
 
-      <% if user_signed_in? %>
+      <!--会員がログインしている時-->
+      <% elsif user_signed_in? %>
        <li>
         <p class="nav-link text-dark mr-5">ようこそ、<%= current_user.name %>さん！</p>
        </li>
@@ -25,6 +52,8 @@
        <li class="nav-item">
          <%= link_to "投稿一覧", tweets_path, class: 'btn btn-outline-secondary mb-3 mr-1' %>
        </li>
+
+      <!--ログインしていない時-->
       <% else %>
        <li class="nav-item">
          <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-secondary mb-3 mr-1' %>

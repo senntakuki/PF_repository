@@ -14,9 +14,9 @@
      <tbody>
       <% @users.each do |user| %>
        <tr>
-        <!--会員の登録日時を表示させたい
-        <td class="scoreStatus_list_label registration_date">-->
-         <%#= created_at.strftime('%Y/%m/%d') %>
+        <!--会員の登録日時を表示させたい-->
+        <td class="scoreStatus_list_label registration_date">
+         <%= user.created_at.strftime('%Y/%m/%d') %>
         </td>
         <td>
          <%= image_tag user.get_profile_image(50,50) %>
@@ -24,7 +24,7 @@
         <td><%= user.name %></td>
         <td></td>
         <td>
-          <%= link_to "詳細", admin_user_path, class: "btn btn-primary" %>
+          <%= link_to "詳細", admin_user_path(user.id), class: "btn btn-primary" %>
         </td>
       </tr>
           <% end %>
