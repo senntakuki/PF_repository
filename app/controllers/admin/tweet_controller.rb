@@ -1,5 +1,5 @@
-class Admin::PostsController < ApplicationController
-      
+class Admin::TweetsController < ApplicationController
+
 
  def index
    @tweets = Tweet.all
