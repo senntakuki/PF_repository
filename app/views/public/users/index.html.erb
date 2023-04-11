@@ -6,7 +6,7 @@
       <th class="col-2">会員画像</th>
       <th class="col-2">名前</th>
       <th class="text-center">紹介文</th>
-      <th>フォローワー数</th>
+      <th>フォロワー数</th>
       <th>詳細ページ</th>
     </tr>
   </thead>
@@ -18,7 +18,7 @@
       </td>
       <td><%= user.name %></td>
       <td><%= user.introduction %></td>
-      <td></td>
+      <td><%= user.followers.count %></td>
       <td>
         <%= link_to "詳細", user_path(user.id), class: "btn btn-primary" %>
       </td>

@@ -7,6 +7,12 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  #フォローした・された時のアソシエーション。"Relationship"で参照するテーブル指定、foreign_keyで参照するカラムを指定
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  #一覧画面で使用する。throughでスルーするテーブル、sourceで参照するカラムの指定
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
    has_one_attached :profile_image
 
    def get_profile_image(widht, height)
@@ -16,7 +22,7 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [widht, height]).processed
    end
-  
+
     #userの検索条件の指定
   def self.looks(search, word)
     if search == "perfect_match"
@@ -30,7 +36,20 @@ class User < ApplicationRecord
     else
       @user = User.all
     end
-
   end
-
+  
+  # フォローしたときの処理
+  def follow(user_id)
+     relationships.create(followed_id: user_id)
+  end
+  
+  # フォローを外すときの処理
+  def unfollow(user_id)
+     relationships.find_by(followed_id: user_id).destroy
+  end
+  
+  # フォローしているか判定
+  def following?(user)
+     followings.include?(user)
+  end
 end

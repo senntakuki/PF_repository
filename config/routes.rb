@@ -25,6 +25,9 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
    resources :users, only: [:index, :show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
      end
      get 'unsubscribe' =>'users#unsubscribe' # 退会確認画面
      patch 'remove' => 'users#remove' # 論理削除用のルーティング

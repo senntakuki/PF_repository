@@ -19,14 +19,25 @@
        </tr>
        <tr>
         <th>フォロー数</th>
-        <td></td>
+        <td> <%= link_to "#{@user.followings.count}", user_followings_path(@user.id) %></td>
        </tr>
        <tr>
         <th>フォロワー数</th>
-        <td></td>
+        <td><%= link_to "#{@user.followers.count}", user_followers_path(@user.id) %></td>
        </tr>
      </tbody>
    </table>
+
+   <div>
+    <% if current_user != @user %>
+     <% if current_user.following?(@user) %>
+      <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-outline-info" %>
+     <% else %>
+      <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-outline-info" %>
+     <% end %>
+     <% end %>
+   </div>
+
     <% if @user == current_user %>
       <p><%= link_to "プロフィール編集⚙️", edit_user_path(@user), class: "btn btn-success" %></p>
       <p><%= link_to "投稿する📮", new_tweet_path, class: "btn btn-primary" %></p>
