@@ -19,5 +19,9 @@ class Tweet < ApplicationRecord
       @tweet = Tweet.all
     end
   end
+  #ログイン中の会員がその投稿にいいねをしていいるかを判断
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
 
 end

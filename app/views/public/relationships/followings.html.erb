@@ -1,7 +1,5 @@
 <div class="container">
   <h3>フォロー一覧</h3>
-   <% if @users.exists? %>
-     <% @users.each do |user| %>
       <table class="table">
         <thead>
           <tr>
@@ -10,6 +8,8 @@
           </tr>
          </thead>
          <tbody>
+          <% if @users.exists? %>
+          <% @users.each do |user| %>
           <tr>
             <td clas="col-1"><%= link_to user_path(user.id) do %>
               <%= image_tag user.get_profile_image(50,50) %>
