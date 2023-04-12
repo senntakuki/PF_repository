@@ -1,4 +1,4 @@
-class Admin::TweetsController < ApplicationController
+class Admin::TweetController < ApplicationController
 
 
  def index
