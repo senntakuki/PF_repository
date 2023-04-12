@@ -1,0 +1,15 @@
+<% tweet.post_comments.each do |comment| %>
+    <table class= "table">
+       <tbody>
+        <tr>
+         <td class="col-1"><%= image_tag comment.user.get_profile_image(40,40) %></td>
+         <td class="col-2"><%= link_to admin_user_path(tweet.user.id) do %>
+            <%= comment.user.name %>
+         </td>
+            <% end %>
+         <td class="col-3"><%= comment.comment %></td><br>
+         <td class="col-1"><%= link_to "Destroy", admin_post_comment_path(comment.tweet, comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
+       </tr>
+       <% end %>
+      </tbody>
+   </table>

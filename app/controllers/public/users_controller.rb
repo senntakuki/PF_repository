@@ -1,8 +1,11 @@
 class Public::UsersController < ApplicationController
+ before_action :authenticate_user!
 
    def show
       @user = User.find(params[:id])
+      @tweet = Tweet.find(params[:id])
       @tweets = @user.tweets
+      @comment = @tweet.post_comments
    end
 
    def index

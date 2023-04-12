@@ -31,7 +31,7 @@
          <% else %>
        <!--一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
            <%= link_to tweet_favorites_path(@tweet), method: :post do %>
-           <span>♡︎</span>
+           <span>♡︎</span><%=@tweet.favorites.count %>
            <% end %>
            <% end %>
          </td>

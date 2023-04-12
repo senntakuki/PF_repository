@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:show]
      resources :tweets, only: [:index, :show, :destroy]
+      resources :post_comments, only: [:create, :destroy]
     root 'homes#top'
   end
 
@@ -31,9 +32,8 @@ Rails.application.routes.draw do
      end
      get 'unsubscribe' =>'users#unsubscribe' # 退会確認画面
      patch 'remove' => 'users#remove' # 論理削除用のルーティング
-     get "search" => "searches#search"
+     get "search" => "searches#search"  #検索機能用
   end
-  #検索機能用
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

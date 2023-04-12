@@ -13,20 +13,22 @@
        </tr>
      </thead>
        <tr>
-         <td><%= @tweet.created_at.strftime("%m-%d %H:%M") %></td>
-         <td><%= link_to admin_user_path(@tweet.user.id) do %>
+         <td class="col-1"><%= @tweet.created_at.strftime("%m-%d %H:%M") %></td>
+         <td class="col-1"><%= link_to admin_user_path(@tweet.user.id) do %>
              <%= image_tag @tweet.user.get_profile_image(50,50) %><br>
              <%= @tweet.user.name %>
              <% end %>
          </td>
-         <td><%= link_to @tweet.title, @tweet %></td>
-         <td><%= @tweet.body %></td>
-         <td><%= tweet.favorites.count %>件</td>
-         <td>コメント<%= @post_comments.count %>件</td>
+         <td class="col-2"><%= link_to @tweet.title, @tweet %></td>
+         <td class="col-3"><%= @tweet.body %></td>
+         <td class="col-1"><%= @tweet.favorites.count %>件</td>
+         <td class="col-1">コメント<%= @comment.count %>件</td>
        </tr>
     </table>
+     <h4>コメント</h4>
+      <div class="comment-area">
+          <%= render "admin/tweets/comment", tweet: @tweet, post_comment: @comment %>
+      </div>
      <div>
-          <% if @tweet.user == admin %>
            <%= link_to "投稿削除", admin_tweet_path(@tweet.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
-          <% end %>
      </div>
