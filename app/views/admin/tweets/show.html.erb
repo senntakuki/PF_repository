@@ -25,10 +25,10 @@
          <td class="col-1">コメント<%= @comment.count %>件</td>
        </tr>
     </table>
+      <div>
+         <%= link_to "管理者が投稿削除します", admin_tweet_path(@tweet), method: :delete, class: "btn btn-danger" %>
+      </div>
      <h4>コメント</h4>
       <div class="comment-area">
           <%= render "admin/tweets/comment", tweet: @tweet, post_comment: @comment %>
       </div>
-     <div>
-         <%= link_to "管理者が削除します", tweet_path(@tweet.id), method: :delete, class: "btn btn-danger" %>
-     </div>

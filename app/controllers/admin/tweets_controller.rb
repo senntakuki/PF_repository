@@ -9,10 +9,13 @@ class Admin::TweetsController < ApplicationController
    @tweet = Tweet.find(params[:id])
    @comment = @tweet.post_comments
  end
- 
+
  def destroy
-     
- end 
+   @user = User.find(params[:id])
+   @tweet = Tweet.find(params[:id])
+   @tweet.delete
+    redirect_to admin_user_path(@user)
+ end
 
   private
 

@@ -13,4 +13,5 @@ class Public::FavoritesController < ApplicationController
   @favorite.destroy
   redirect_to tweet_path(params[:tweet_id])
  end
+
 end
