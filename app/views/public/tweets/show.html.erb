@@ -14,7 +14,7 @@
        </tr>
      </thead>
        <tr>
-         <td><%= @tweet.created_at.strftime("%m-%d %H:%M") %></td>
+         <td><%= @tweet.created_at.strftime("%m/%d %H:%M") %></td>
          <td><%= link_to user_path(@tweet.user.id) do %>
              <%= image_tag @tweet.user.get_profile_image(50,50) %><br>
              <%= @tweet.user.name %>

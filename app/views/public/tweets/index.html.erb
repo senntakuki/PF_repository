@@ -2,7 +2,7 @@
 <div class="container">
  <h2 class="mb-3">投稿一覧</h2>
 
- <table class="table mt-3">
+ <table class="table table-striped mt-3">
    <thead>
      <tr>
        <th class="col-2">投稿日</th>
@@ -16,7 +16,7 @@
    <tbody>
      <% @tweets.each do |tweet| %>
      <tr>
-       <td><%= tweet.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+       <td><%= tweet.created_at.strftime("%Y/%m/%d %H:%M") %></td>
        <td><%= link_to user_path(tweet.user.id) do %>
        <%= image_tag tweet.user.get_profile_image(50,50) %>
        </td>
@@ -25,7 +25,7 @@
          <%= link_to tweet.title,tweet %>
       </td>
       <td><%= tweet.body %></td>
-      <td><%= tweet.favorites.count %>件</td>
+      <td>❤<%= tweet.favorites.count %></td>
       <td>
           <%= link_to "コメント #{ tweet.post_comments.count}件", tweet_path(tweet.id) %>
       </td>

@@ -29,6 +29,7 @@
           <th>タイトル</th>
           <th>投稿内容</th>
           <th>いいね数</th>
+          <th>コメント</th>
         </tr>
       </thead>
        <tbody>
@@ -39,7 +40,8 @@
              <% end %>
              </td>
            <td><%= tweet.body %></td>
-           <td></td>
+           <td>❤<%= tweet.favorites.count %></td>
+           <td>コメント<%= tweet.post_comments.count %>件</td>
          </tr>
         <% end %>
        </tbody>

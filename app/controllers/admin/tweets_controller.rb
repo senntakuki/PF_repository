@@ -9,6 +9,10 @@ class Admin::TweetsController < ApplicationController
    @tweet = Tweet.find(params[:id])
    @comment = @tweet.post_comments
  end
+ 
+ def destroy
+     
+ end 
 
   private
 

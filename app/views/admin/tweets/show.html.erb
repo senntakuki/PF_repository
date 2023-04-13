@@ -30,5 +30,5 @@
           <%= render "admin/tweets/comment", tweet: @tweet, post_comment: @comment %>
       </div>
      <div>
-           <%= link_to "投稿削除", admin_tweet_path(@tweet.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+         <%= link_to "管理者が削除します", tweet_path(@tweet.id), method: :delete, class: "btn btn-danger" %>
      </div>

@@ -1,6 +1,6 @@
 class Admin::PostCommentsController < ApplicationController
     before_action :authenticate_admin!
-     
+
   def create
     @tweet = Tweet.find(params[:tweet_id])
     @comment = current_user.post_comments.new(post_comment_params)
@@ -15,7 +15,7 @@ class Admin::PostCommentsController < ApplicationController
     @post_comment = PostComment.new
   end
 
-   private
+  private
 
   def post_comment_params
     params.require(:post_comment).permit(:comment, :profile_image)
