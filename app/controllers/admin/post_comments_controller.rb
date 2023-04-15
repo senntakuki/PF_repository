@@ -7,12 +7,14 @@ class Admin::PostCommentsController < ApplicationController
     @comment.tweet_id = @tweet.id
     @comment.save
     @post_comment = PostComment.new
+    redirect_to request.referer
   end
 
   def destroy
-    @tweet = Tweet.find_by(params[:id])
     PostComment.find(params[:id]).destroy
-    @post_comment = PostComment.new
+    #@tweet = Tweet.find_by(params[:tweet_id])
+    #@post_comment = PostComment.new
+    redirect_to request.referer
   end
 
   private

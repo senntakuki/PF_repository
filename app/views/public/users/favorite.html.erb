@@ -1,24 +1,4 @@
 <div class="container">
-   <h3>いいね一覧</h3>
-    <table class="table table-stripe">
-      <thead>
-        <tr>
-          <th>会員画像</th>
-          <th>タイトル</th>
-          <th>内容</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= link_to user_path(user.id) do %>
-              <%= image_tag tweet.user.get_profile_image(50,50) %>
-          </td>
-              <% end %>
-          <td><%= link_to tweet.title,tweet_path(tweet.id) %></td>
-          <td><%= tweet.body %></td>
-           <td><i class="fa fa-heart unlike-btn"></i></td>
-        </tr>
-      </tbody>
-    </table>
-
+    <p>いいねした投稿一覧</p>
+      <%= render partial: "public/favorites/favorites", collection: @favorite_tweet %>
 </div>

@@ -48,10 +48,10 @@
            <%= image_tag tweet.user.get_profile_image(100,100) %>
            <% end %>
          </td>
-         <td class="col-2"><%= link_to @tweet.title,(admin_tweet_path) %></td>
+         <td class="col-2"><%= link_to tweet.title,admin_tweet_path(tweet.id) %></td>
          <td class="col-3"><%= tweet.body %></td>
-         <td class="col-1"><%= @tweet.favorites.count %>件</td>
-         <td class="col-1">コメント<%= @comment.count %>件</td>
+         <td class="col-1"><%= tweet.favorites.count %>件</td>
+         <td class="col-1">コメント<%= tweet.post_comments.count %>件</td>
        </tr>
      </tbody>
      <% end %>

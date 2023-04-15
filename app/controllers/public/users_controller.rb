@@ -4,9 +4,7 @@ class Public::UsersController < ApplicationController
 
    def show
       @user = User.find(params[:id])
-      @tweet = Tweet.find(params[:id])
       @tweets = @user.tweets
-      @comment = @tweet.post_comments
    end
 
    def favorites

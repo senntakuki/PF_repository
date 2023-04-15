@@ -48,7 +48,7 @@
          <div class="comment-area">
           <%= render "public/post_comments/comment", tweet: @tweet, post_comment: @post_comment %>
          </div>
-
+         
        <div>
          <%= form_with model: [@tweet, @post_comment], method: :post, local: true do |f| %>
         <div class="field">

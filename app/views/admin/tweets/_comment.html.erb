@@ -8,7 +8,7 @@
          </td>
             <% end %>
          <td class="col-3"><%= comment.comment %></td><br>
-         <td class="col-1"><%= link_to "Destroy", admin_post_comment_path(comment.tweet, comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
+         <td class="col-1"><%= link_to "削除", admin_post_comment_path(comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
        </tr>
        <% end %>
       </tbody>

@@ -19,7 +19,7 @@
              <%= @tweet.user.name %>
              <% end %>
          </td>
-         <td class="col-2"><%= link_to @tweet.title, @tweet %></td>
+         <td class="col-2"><%= @tweet.title %></td>
          <td class="col-3"><%= @tweet.body %></td>
          <td class="col-1"><%= @tweet.favorites.count %>件</td>
          <td class="col-1">コメント<%= @comment.count %>件</td>
@@ -28,7 +28,7 @@
       <div>
          <%= link_to "管理者が投稿削除します", admin_tweet_path(@tweet), method: :delete, class: "btn btn-danger" %>
       </div>
-     <h4>コメント</h4>
+     <h4 class="mt-3">コメント</h4>
       <div class="comment-area">
           <%= render "admin/tweets/comment", tweet: @tweet, post_comment: @comment %>
       </div>

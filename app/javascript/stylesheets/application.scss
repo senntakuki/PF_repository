@@ -1,2 +1,20 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Kosugi Maru', 'Meiryo', sans-serif;
+}
+
+.add-font{
+  font-family: 'Kosugi Maru', 'Meiryo', sans-serif;
+}
+
+.image{
+  position:relative;
+  overflow:hidden;
+  padding-bottom:100%;
+}
+.image img{
+  position:absolute;
+}

@@ -11,10 +11,9 @@ class Admin::TweetsController < ApplicationController
  end
 
  def destroy
-   @user = User.find(params[:id])
    @tweet = Tweet.find(params[:id])
-   @tweet.delete
-    redirect_to admin_user_path(@user)
+   @tweet.destroy
+    redirect_to admin_tweets_path
  end
 
   private
