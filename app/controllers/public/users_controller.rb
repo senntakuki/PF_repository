@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
- before_action :authenticate_user!
+  before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:edit]
   before_action :set_user, only: [:favorites]
 
    def show
@@ -48,6 +49,19 @@ class Public::UsersController < ApplicationController
      end
     end
 
+    def ensure_guest_user
+       @user = User.find(params[:id])
+      if @user.name == "ゲストユーザー"
+       redirect_to user_path(current_user) , notice: 'ゲストユーザーは編集できません。'
+      end
+    end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
+    end
+  end
 
 
    private

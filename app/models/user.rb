@@ -37,19 +37,26 @@ class User < ApplicationRecord
       @user = User.all
     end
   end
-  
+
   # フォローしたときの処理
   def follow(user_id)
      relationships.create(followed_id: user_id)
   end
-  
+
   # フォローを外すときの処理
   def unfollow(user_id)
      relationships.find_by(followed_id: user_id).destroy
   end
-  
+
   # フォローしているか判定
   def following?(user)
      followings.include?(user)
+  end
+  #ゲストログイン用
+  def self.guest
+    find_or_create_by!(name: 'guestuser', email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲストユーザー"
+    end
   end
 end
