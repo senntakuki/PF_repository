@@ -38,7 +38,7 @@
       <!--会員がログインしている時-->
       <% elsif user_signed_in? %>
        <li>
-        <p class="nav-link text-dark mr-5">ようこそ、<%= current_user.name %>さん！</p>
+        <p class="nav-link text-dark mr-2">ようこそ、<%= current_user.name %>さん！</p>
        </li>
        <li class="nav-item">
          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary mb-3 mr-1' %>

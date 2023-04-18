@@ -44,6 +44,8 @@ class Public::UsersController < ApplicationController
      end
     end
 
+   private
+
     def ensure_guest_user
        @user = User.find(params[:id])
       if @user.name == "ゲストユーザー"
@@ -51,19 +53,17 @@ class Public::UsersController < ApplicationController
       end
     end
 
-  def ensure_correct_user
-    @user = User.find(params[:id])
+    def ensure_correct_user
+       @user = User.find(params[:id])
     unless @user == current_user
       redirect_to user_path(current_user)
     end
-  end
+    end
 
 
-   private
-
-  def user_params
-    params.require(:user).permit(:name, :profile_image, :introduction, :is_deleted)
-  end
+   def user_params
+     params.require(:user).permit(:name, :profile_image, :introduction, :is_deleted)
+   end
 
 
 end
