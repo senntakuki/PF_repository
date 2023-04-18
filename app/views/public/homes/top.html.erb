@@ -14,7 +14,7 @@
      </div>
    </div>
    <div class="text-center mt-3 mb-3">
-     <%#= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-success", method: :post %>
+     <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-success sign_in", method: :post %>
    </div>
    <div class="row d-flex ml-4 text-center">
      <%= render "public/favorites/ranks", favorite_ranks: @favorite_ranks, followers_ranks: @followers_ranks %>

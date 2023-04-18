@@ -8,6 +8,7 @@
         <tr>
           <th>画像</th>
           <th>名前</th>
+          <th>紹介文</th>
           <th>フォロワー数</th>
         </tr>
       </thead>
@@ -18,7 +19,9 @@
              <%= image_tag user.get_profile_image(100,100) %>
              <% end %>
              </td>
-           <td><%= user.name %></td>
+           <td><%= link_to user.name, user_path(user.id) %></td>
+           <td><%= user.introduction %></td>
+           <td>フォロワー<%= user.followers.count %>人</td>
          </tr>
         <% end %>
        </tbody>
@@ -26,6 +29,7 @@
      <!--検索対象モデルがUserではなくTweetの時-->
       <thead>
         <tr>
+          <th>投稿者</th>
           <th>タイトル</th>
           <th>投稿内容</th>
           <th>いいね数</th>
@@ -35,6 +39,7 @@
        <tbody>
         <% @tweets.each do |tweet| %>
          <tr>
+           <td><%= link_to tweet.user.name, user_path(tweet.user.id) %></td>
            <td><%= link_to tweet_path(tweet.id) do %>
              <%= tweet.title %>
              <% end %>

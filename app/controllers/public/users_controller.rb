@@ -8,11 +8,6 @@ class Public::UsersController < ApplicationController
       @tweets = @user.tweets
    end
 
-   def favorites
-      favorites = Favorites.where(user_id: @user.id).pluck(:tweet_id)
-      @favorite_tweet = Tweet.find(favorites)
-   end
-
    def index
       @users = User.all
    end
@@ -65,10 +60,6 @@ class Public::UsersController < ApplicationController
 
 
    private
-
-   def set_user
-     @user = User.find(params[:id])
-   end
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction, :is_deleted)

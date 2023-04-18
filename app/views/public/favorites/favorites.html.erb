@@ -1,0 +1,27 @@
+  <div class="container">
+   <h3>いいね一覧</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>投稿者</th>
+          <th>タイトル</th>
+          <th>内容</th>
+        </tr>
+      </thead>
+      <% @favorite_tweets.each do |favorite| %>
+      <tbody>
+        <tr>
+          <td>
+            <%= favorite.tweet.user.name %>
+          </td>
+          <td>
+            <%= link_to favorite.tweet.title, tweet_path(favorite.tweet.id) %>
+          </td>
+          <td>
+            <%= favorite.tweet.body %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+   </div>

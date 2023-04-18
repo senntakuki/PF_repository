@@ -14,4 +14,9 @@ class Public::FavoritesController < ApplicationController
   redirect_to tweet_path(params[:tweet_id])
  end
 
+ def favorites
+    user = User.find(params[:user_id])
+    @favorite_tweets = user.favorites
+ end
+
 end
