@@ -8,7 +8,7 @@
          <% end %>
          <td class="col-3"><%= comment.comment %></td><br>
          <% if comment.user == current_user %>
-         <td class="col-1"><%= link_to "Destroy", tweet_post_comment_path(comment.tweet, comment), method: :delete, class: "btn btn-sm btn-danger" %></td><br>
+         <td class="col-1"><%= link_to "削除する", tweet_post_comment_path(comment.tweet, comment), method: :delete, class: "btn btn-sm btn-danger" %></td><br>
          <% end %>
          <% end %>
        </tr>

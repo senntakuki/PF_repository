@@ -17,7 +17,7 @@ class  Public::TweetsController < ApplicationController
   end
 
   def index
-    
+
     @tweets = Tweet.all
   end
 
@@ -41,10 +41,9 @@ class  Public::TweetsController < ApplicationController
   end
 
   def destroy
-     @user = User.find(params[:id])
      @tweet = Tweet.find(params[:id])
-     @tweet.delete
-     redirect_to user_path(@user)
+     @tweet.destroy
+     redirect_to user_path(current_user)
   end
 
 
