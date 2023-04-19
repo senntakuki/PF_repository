@@ -18,11 +18,11 @@
          <td><%= @user.introduction %></td>
        </tr>
        <tr>
-        <th>フォロー数</th>
+        <th>フォロー人数</th>
         <td> <%= link_to "#{@user.followings.count}", user_followings_path(@user.id) %></td>
        </tr>
        <tr>
-        <th>フォロワー数</th>
+        <th>フォロワー人数</th>
         <td><%= link_to "#{@user.followers.count}", user_followers_path(@user.id) %></td>
        </tr>
        <tr>

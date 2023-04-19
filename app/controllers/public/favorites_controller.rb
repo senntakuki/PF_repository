@@ -13,7 +13,7 @@ class Public::FavoritesController < ApplicationController
   @favorite.destroy
   redirect_to tweet_path(params[:tweet_id])
  end
-
+#いいね一覧
  def favorites
     user = User.find(params[:user_id])
     @favorite_tweets = user.favorites
