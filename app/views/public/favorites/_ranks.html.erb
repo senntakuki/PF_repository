@@ -1,6 +1,6 @@
 
   <div class="col-6">
-   <h5>👑いいね数ランキング👑</h5>
+   <h5>👑いいね数ランキング👑(タイトル)</h5>
         <!--配列の1つ目から順に1位、２位と表示される-->
           <% favorite_ranks.each.with_index(1) do |favorite, i| %>
             <table class="table table-warning">
@@ -17,15 +17,15 @@
            </div>
 
            <div class="col-6">
-             <h5>👑フォロワーランキング👑</h5>
+             <h5>👑フォロワーランキング👑(会員名)</h5>
                <% followers_ranks.each.with_index(1) do |followers, i| %>
-                <table clas="table table-warning">
+                <table class="table table-warning">
                  <tbody>
-                  <tr class="col-2">
-                   <th>👑第<%= i %>位</th>
-                    <td>　　<%= link_to followers.name,user_path(followers.id) %></td>
-                    <td>　🙆‍♂️<%= followers.followers.count %>人</td>
-                   </tr>
+                  <tr>
+                   <th class="col-2">👑第<%= i %>位</th>
+                    <td class="col-2"><%= link_to followers.name,user_path(followers.id) %></td>
+                    <td class="col-2">🙆‍♂️<%= followers.followers.count %>人</td>
+                   </tr class="col-2">
                     <% end %>
                  </tbody>
                </table>
