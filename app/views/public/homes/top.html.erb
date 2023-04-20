@@ -1,19 +1,20 @@
 <div class="container">
   <h1 class="text-center mt-3">SNOW PARK LEGENDS</h1>
 
-   <div class="text-center ml-5">
-     <div class="card ml-5" style="max-width: 800px;">
+   <div class="row">
+     <div class="card mx-auto" style="max-width: 800px;">
        <%= image_tag asset_path('top4.jpg', :width =>'112', :height =>'auto', :alt => '画像') %>
        <div class="card-img-overlay col">
-         <p class="text-brack text-center d-flex align-items-center justify-content-center" style="height:250px;">
+         <p class="text-brack d-flex align-items-center justify-content-center" style="height:250px;">
             ようこそsnow park legendsへ<br>
             ここでは皆さんが知っているスキー場の情報を<br>
-            発信してもらい、皆さんで共有してもらうサイトです。<br>
+            発信してもらい、皆さんで共有してもらうSNSサイトです。<br>
+            スキー場選びの際の参考になればと思います。<br>
          </p>
        </div>
      </div>
    </div>
-   <div class="text-center mt-3 mb-3">
+   <div class="text-center mt-3 mb-4">
      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-success sign_in" %>
    </div>
    <div class="row d-flex ml-4 text-center">

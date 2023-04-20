@@ -20,7 +20,6 @@ class Public::SessionsController < Devise::SessionsController
   # アカウントを取得できなかった場合、このメソッドを終了する
   return if !@user
     # 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-    #＠userのactive_for_authentication?メソッドがfalseであるかどうか。
     if @user.valid_password?(params[:user][:password]) && @user.is_deleted
     # 退会できれば新規登録画面にリダイレクトする
     redirect_to new_user_registration_path
