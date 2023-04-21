@@ -5,6 +5,9 @@ class Tweet < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_one_attached :profile_image
 
+  validates :title,presence:true, length: { minimum: 2, maximum: 10 }, uniqueness: true
+  validates :body,presence:true, length: {maximum:100}
+
     #tweetの検索条件の指定
   def self.looks(search, word)
     if search == "perfect_match"
