@@ -19,7 +19,11 @@
 - 気になった事を共有したいと思った時
 
 ## 設計書
+アプリケーション詳細設計書
+- https://docs.google.com/spreadsheets/d/1wek6UTzn37OxKbaWmXabliUpXZVEH7KpmlaYgWNzoB0/edit#gid=0
 
+テーブル定義書
+- https://docs.google.com/spreadsheets/d/1_-gLzZQCzmS0Ufk6aOl49l-AqcIvQQdfIlVL4g623Oc/edit#gid=747247363
 
 ## 開発環境
 - OS：Linux(CentOS)
