@@ -1,6 +1,6 @@
 class  Public::TweetsController < ApplicationController
    before_action :authenticate_user!
-   before_action :current_user, only: [:edit, :update]
+   before_action :ensure_user, only: [:edit, :update, :destroy]
 
   def new
     @tweet = Tweet.new
@@ -49,6 +49,12 @@ class  Public::TweetsController < ApplicationController
 
 
   private
+
+  def ensure_user
+    @tweets = current_user.tweets
+    @tweet = @tweets.find_by(id: params[:id])
+    redirect_to tweet_path unless @tweet
+  end
 
   def tweet_params
     params.require(:tweet).permit(:title, :body, :post_comments)

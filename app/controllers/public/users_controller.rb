@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_user, only: [:edit, :update, :destroy]
   before_action :ensure_guest_user, only: [:edit]
   before_action :set_user, only: [:favorites]
 
@@ -53,7 +54,7 @@ class Public::UsersController < ApplicationController
       end
     end
 
-    def ensure_correct_user
+    def ensure_user
        @user = User.find(params[:id])
     unless @user == current_user
       redirect_to user_path(current_user)
