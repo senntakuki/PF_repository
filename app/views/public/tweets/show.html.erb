@@ -11,6 +11,7 @@
          <th class="col-3">内容</th>
          <th class="col-1">いいね❤️</th>
          <th class="col-1">コメント💬</th>
+         <th class="col-1">閲覧数👀</th>
        </tr>
      </thead>
        <tr>
@@ -36,6 +37,7 @@
            <% end %>
          </td>
          <td>コメント<%= @post_comments.count %>件</td>
+         <td>閲覧数👀:<%= @tweet_detail.view_counts.count %></td>
        </tr>
     </table>
      <div>

@@ -3,6 +3,7 @@ class Tweet < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :view_counts, dependent: :destroy
   has_one_attached :profile_image
 
   validates :title,presence:true, length: { minimum: 2, maximum: 10 }, uniqueness: true

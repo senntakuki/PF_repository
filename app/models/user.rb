@@ -13,6 +13,7 @@ class User < ApplicationRecord
   #一覧画面で使用する。throughでスルーするテーブル、sourceで参照するカラムの指定
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+  has_many :view_counts, dependent: :destroy
    has_one_attached :profile_image
    
    validates :name, length: { minimum: 2, maximum: 15 }, uniqueness: true
