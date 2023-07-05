@@ -36,8 +36,8 @@
            <% end %>
            <% end %>
          </td>
-         <td>コメント<%= @post_comments.count %>件</td>
-         <td>閲覧数👀:<%= @tweet_detail.view_counts.count %></td>
+         <td>コメント<%= @post_comments.count %></td>
+         <td>閲覧数👀<%= @tweet_detail.view_counts.count %></td>
        </tr>
     </table>
      <div>
@@ -50,7 +50,7 @@
          <div class="comment-area">
           <%= render "public/post_comments/comment", tweet: @tweet, post_comment: @post_comment %>
          </div>
-         
+
        <div>
          <%= form_with model: [@tweet, @post_comment], method: :post, local: true do |f| %>
         <div class="field">

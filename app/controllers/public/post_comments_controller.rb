@@ -1,6 +1,6 @@
 class Public::PostCommentsController < ApplicationController
     before_action :authenticate_user!
-    before_action :ensure_user, only: [:edit, :update, :destroy]
+    before_action :current_user, only: [:edit, :update, :destroy]
 
   def create
     @tweet = Tweet.find(params[:tweet_id])
