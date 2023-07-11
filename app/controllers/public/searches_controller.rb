@@ -4,7 +4,7 @@ class Public::SearchesController < ApplicationController
       def search
           @range = params[:range]
           #検索結果がuserの場合
-       if @range == "会員"
+       if @range == "投稿者"
           @users = User.looks(params[:search], params[:word])
           #検索結果がtweetの場合
        else
