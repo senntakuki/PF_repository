@@ -11,7 +11,7 @@
        <th class="text-center col-3">内容</th>
        <th>いいね❤️</th>
        <th>コメント💬</th>
-       <th>閲覧数👀</th>
+       <!--<th>閲覧数👀</th>-->
      </tr>
    </thead>
    <tbody>
@@ -28,9 +28,9 @@
       <td><%= tweet.body %></td>
       <td>❤<%= tweet.favorites.count %></td>
       <td>
-          <%= link_to "コメント #{ tweet.post_comments.count}件", tweet_path(tweet.id) %>
+          <%= link_to " #{ tweet.post_comments.count}件", tweet_path(tweet.id) %>
       </td>
-      <td>👀<%= tweet.view_counts.count %></td>
+      <!--<td>👀<%= tweet.view_counts.count %></td>-->
       <% end %>
      </tr>
    </tbody>

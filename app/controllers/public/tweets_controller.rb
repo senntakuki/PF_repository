@@ -25,10 +25,10 @@ class  Public::TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
     @post_comments = @tweet.post_comments
     @post_comment = PostComment.new
-    @tweet_detail = Tweet.find(params[:id])
-   unless ViewCount.find_by(user_id: current_user.id, tweet_id: @tweet_detail.id)
-      current_user.view_counts.create(tweet_id: @tweet_detail.id)
-   end
+    # @tweet_detail = Tweet.find(params[:id])
+#   unless ViewCount.find_by(user_id: current_user.id, tweet_id: @tweet_detail.id)
+#       current_user.view_counts.create(tweet_id: @tweet_detail.id)
+#   end
   end
 
   def edit
